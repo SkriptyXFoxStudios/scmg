@@ -4,13 +4,14 @@
 <meta charset="UTF-8">
 <title>SCMG</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800&display=swap" rel="stylesheet">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Orbitron}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Montserrat',sans-serif}
 body{background:black;color:white;overflow-x:hidden}
 
-
+/* INTRO */
 #intro{
     position:fixed;
     inset:0;
@@ -144,7 +145,7 @@ li::before{content:"☠ ";color:red}
 <li><b>Sigla:</b> SCMG</li>
 <li><b>Data de Criação:</b> 05 de Novembro</li>
 <li><b>Local:</b> Tubarão – São Cristóvão</li>
-<li><b>Inspiração:</b> Manji (símbolo de união)</li>
+<li><b>Inspiração:</b> Manji</li>
 <li><b>Lema:</b> Pela união, pela irmandade.</li>
 </ul>
 </div>
@@ -177,16 +178,13 @@ li::before{content:"☠ ";color:red}
 <div class="section">
 <h2>REGRAS</h2>
 <ul>
-<li>Não ameaçar ou agredir civis</li>
-<li>Não exibir armas da gangue</li>
+<li>Não ameaçar civis</li>
+<li>Não exibir armas</li>
 <li>Não abusar do poder</li>
 <li>Respeitar superiores</li>
-<li>Proibido brigas internas</li>
-<li>Não usar o nome da gangue para problemas pessoais</li>
 <li>Não vazar informações</li>
-<li>Não revelar identidade real</li>
-<li>Obedecer ordens</li>
-<li>Manter o nome da gangue limpo</li>
+<li>Não usar o nome da gangue em problemas pessoais</li>
+<li>Manter disciplina e respeito</li>
 </ul>
 </div>
 
@@ -194,10 +192,9 @@ li::before{content:"☠ ";color:red}
 <h2>PUNIÇÕES</h2>
 <ul>
 <li>Traição → 40 ripadas + expulsão</li>
-<li>Matar sem permissão → punição máxima</li>
 <li>Desobediência → advertência</li>
 <li>Abuso de poder → rebaixamento</li>
-<li>Insulto a superiores → 20 ripadas</li>
+<li>Insulto → 20 ripadas</li>
 <li>3 advertências → expulsão</li>
 </ul>
 </div>
@@ -211,25 +208,17 @@ const obs=new IntersectionObserver(e=>{
 document.querySelectorAll(".section").forEach(s=>obs.observe(s))
 
 const troll = `
-⠀⠀⠀⠀⠀███████████████████████████
-███████▀▀▀░░░░░░░▀▀▀███████
-████▀░░░░░░░░░░░░░░░░░▀████
-███│░░░░░░░░░░░░░░░░░░░│███
-██▌│░░░░░░░░░░░░░░░░░░░│▐██
-██░└┐░░░░░░░░░░░░░░░░░┌┘░██
-██░░└┐░░░░░░░░░░░░░░░┌┘░░██
-██░░┌┘▄▄▄▄▄░░░░░▄▄▄▄▄└┐░░██
-██▌░│██████▌░░░▐██████│░▐██
-███░│▐███▀▀░░▄░░▀▀███▌│░███
-██▀─┘░░░░░░░▐█▌░░░░░░░└─▀██
-██▄░░░▄▄▄▓░░▀█▀░░▓▄▄▄░░░▄██
-████▄─┘██▌░░░░░░░▐██└─▄████
-█████░░▐█─┬┬┬┬┬┬┬─█▌░░█████
-████▌░░░▀┬┼┼┼┼┼┼┼┬▀░░░▐████
-█████▄░░░└┴┴┴┴┴┴┴┘░░░▄█████
-███████▄░░░░░░░░░░░▄███████
-██████████▄▄▄▄▄▄▄██████████
-███████████████████████████
+⣿⣿⣿⣿⣿⣿⡟⠁⠄⠄⠄⠄⣠⣤⣴⣶⣶⣶⣶⣤⡀⠈⠙⢿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⡟⠄⠄⠄⠄⠄⣸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣆⠄⠈⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⠁⠄⠄⠄⢀⣴⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠄⠄⢺⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⡄⠄⠄⠄⠙⠻⠿⣿⣿⣿⣿⠿⠿⠛⠛⠻⣿⡄⠄⣾⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⡇⠄⠄⠁ 👁️ ⠄⢹⣿⡗⠄ 👁️ ⢄⡀⣾⢀⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⡇⠘⠄⠄⠄⢀⡀⠄⣿⣿⣷⣤⣤⣾⣿⣿⣿⣧⢸⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⡇⠄⣰⣿⡿⠟⠃⠄⣿⣿⣿⣿⣿⡛⠿⢿⣿⣷⣾⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⡄⠈⠁⠄⠄⠄⠄⠻⠿⢛⣿⣿⠿⠂⠄⢹⢹⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⡐⠐⠄⠄⣠⣀⣀⣚⣯⣵⣶⠆⣰⠄⠞⣾⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣷⡄⠄⠄⠈⠛⠿⠿⠿⣻⡏⢠⣿⣎⣾⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⡿⠟⠛⠄⠄⠄⠄⠙⣛⣿⣿⣵⣿⡿⢹⡟⣿⣿⣿⣿⣿
 You are being watched !
 `
 
@@ -241,4 +230,3 @@ setTimeout(()=>{
 
 </body>
 </html>
-
