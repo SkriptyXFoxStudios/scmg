@@ -4,134 +4,174 @@
 <meta charset="UTF-8">
 <title>SCMG</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800&display=swap" rel="stylesheet">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Orbitron',sans-serif}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Montserrat',sans-serif}
 body{background:black;color:white;overflow-x:hidden}
-
-/* FUNDO */
-.bg{
-position:fixed;
-inset:0;
-background:radial-gradient(circle at center,#200 0%,#000 70%);
-animation:bg 8s infinite alternate;
-z-index:-2;
-}
-@keyframes bg{0%{filter:hue-rotate(0)}100%{filter:hue-rotate(160deg)}}
 
 /* INTRO */
 #intro{
-position:fixed;
-inset:0;
-background:black;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-z-index:9999;
-animation:fadeOut 1.2s ease 5s forwards;
+    position:fixed;
+    inset:0;
+    background:black;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    z-index:9999;
+    animation:fadeOut 1s ease forwards;
+    animation-delay:5s;
 }
 
 #symbol{
-font-size:140px;
-color:red;
-animation:spin 2s linear infinite, glow 1.5s infinite alternate;
+    font-size:140px;
+    color:red;
+    animation:bootSpin 1.5s linear infinite, glow 1s infinite alternate;
 }
 
 #intro h1{
-margin-top:25px;
-letter-spacing:6px;
-font-size:26px;
-opacity:.9;
+    margin-top:20px;
+    letter-spacing:6px;
+    animation:glitch 1s infinite;
 }
 
-@keyframes spin{to{transform:rotate(360deg)}}
-@keyframes glow{from{text-shadow:0 0 10px red}to{text-shadow:0 0 45px red}}
-@keyframes fadeOut{to{opacity:0;pointer-events:none}}
-
-/* HEADER */
-header{
-text-align:center;
-margin-top:40px;
-font-size:38px;
-letter-spacing:6px;
+@keyframes bootSpin{
+    0%{transform:rotate(0deg) scale(1)}
+    50%{transform:rotate(180deg) scale(1.2)}
+    100%{transform:rotate(360deg) scale(1)}
 }
 
-/* SIMBOLO FIXO */
-#mini{
-position:fixed;
-left:15px;
-top:50%;
-transform:translateY(-50%);
-font-size:36px;
-color:red;
-opacity:.85;
-animation:pulse 2s infinite;
+@keyframes glow{
+    from{text-shadow:0 0 10px red}
+    to{text-shadow:0 0 40px red}
 }
 
-@keyframes pulse{
-0%{opacity:.4}
-50%{opacity:1}
-100%{opacity:.4}
+@keyframes glitch{
+    0%{text-shadow:2px 2px red}
+    50%{text-shadow:-2px -2px cyan}
+    100%{text-shadow:2px 2px red}
 }
 
-/* SEÇÕES */
+@keyframes fadeOut{
+    to{opacity:0;visibility:hidden}
+}
+
+/* UI */
+#side{
+    position:fixed;
+    top:20px;
+    left:20px;
+    display:flex;
+    align-items:center;
+    gap:15px;
+    opacity:0;
+    animation:showSide 1s forwards;
+    animation-delay:5.2s;
+}
+
+#side span{
+    font-size:40px;
+    color:red;
+    animation:spinSlow 6s linear infinite;
+}
+
+@keyframes spinSlow{
+    from{transform:rotate(0)}
+    to{transform:rotate(360deg)}
+}
+
+@keyframes showSide{
+    to{opacity:1}
+}
+
+h1{
+    font-size:2.5rem;
+    letter-spacing:6px;
+}
+
 .section{
-max-width:1000px;
-margin:120px auto;
-padding:40px;
-background:rgba(0,0,0,.85);
-border:1px solid red;
-box-shadow:0 0 40px red;
-opacity:0;
-transform:translateY(80px) scale(.9);
-transition:1s;
+    max-width:1100px;
+    margin:120px auto;
+    padding:40px;
+    border:1px solid red;
+    box-shadow:0 0 40px red;
+    background:rgba(0,0,0,.85);
+    opacity:0;
+    transform:translateY(80px);
+    transition:1s;
 }
 
 .section.show{
-opacity:1;
-transform:translateY(0) scale(1);
+    opacity:1;
+    transform:translateY(0);
 }
 
 li{margin:10px 0}
 li::before{content:"☠ ";color:red}
 
-/* OLHO */
 #eye{
-position:fixed;
-bottom:20px;
-right:20px;
-color:red;
-font-size:14px;
-animation:blink 1.2s infinite;
+    position:fixed;
+    bottom:30px;
+    right:30px;
+    color:red;
+    animation:blink 1s infinite;
 }
-@keyframes blink{0%,100%{opacity:.2}50%{opacity:1}}
+
+@keyframes blink{
+    0%,100%{opacity:.2}
+    50%{opacity:1}
+}
 </style>
 </head>
 
 <body>
 
-<div class="bg"></div>
-
 <div id="intro">
-<div id="symbol">⋈</div>
-<h1>SANTA CATARINA MANJI GANG</h1>
+    <div id="symbol">⋈</div>
+    <h1>SANTA CATARINA MANJI GANG</h1>
 </div>
 
-<div id="mini">⋈</div>
-
-<header>SANTA CATARINA MANJI GANG</header>
+<div id="side">
+    <span>⋈</span>
+    <h1>SCMG</h1>
+</div>
 
 <div class="section">
 <h2>IDENTIDADE</h2>
 <ul>
-<li>Nome: Santa Catarina Manji Gang</li>
-<li>Sigla: SCMG</li>
-<li>Criação: 2024</li>
-<li>Origem: Santa Catarina</li>
-<li>Fundadores: Drako, Venu, Mth, Yohannan, Misa</li>
-<li>Lema: Pela união, pela irmandade</li>
+<li><b>Nome:</b> Santa Catarina Manji Gang</li>
+<li><b>Sigla:</b> SCMG</li>
+<li><b>Data de Criação:</b> 05 de Novembro</li>
+<li><b>Local:</b> Tubarão – São Cristóvão</li>
+<li><b>Inspiração:</b> Manji</li>
+<li><b>Lema:</b> Pela união, pela irmandade.</li>
+</ul>
+</div>
+
+<div class="section">
+<h2>FUNDADORES</h2>
+<ul>
+<li>Drako</li>
+<li>Venu</li>
+<li>Mth</li>
+<li>Yohannan</li>
+<li>Misa</li>
+</ul>
+</div>
+
+<div class="section">
+<h2>HIERARQUIA</h2>
+<ul>
+<li>Comandante Geral</li>
+<li>Vice-Comandante Geral</li>
+<li>Conselho</li>
+<li>Capitão</li>
+<li>Vice-Capitão</li>
+<li>Sargento</li>
+<li>Soldado</li>
+<li>Recruta</li>
 </ul>
 </div>
 
@@ -140,54 +180,53 @@ animation:blink 1.2s infinite;
 <ul>
 <li>Não ameaçar civis</li>
 <li>Não exibir armas</li>
-<li>Não abusar de poder</li>
-<li>Não desrespeitar superiores</li>
+<li>Não abusar do poder</li>
+<li>Respeitar superiores</li>
 <li>Não vazar informações</li>
-<li>Honrar o nome da gangue</li>
+<li>Não usar o nome da gangue em problemas pessoais</li>
+<li>Manter disciplina e respeito</li>
 </ul>
 </div>
 
 <div class="section">
 <h2>PUNIÇÕES</h2>
 <ul>
-<li>Traição → Expulsão + 40 ripadas</li>
-<li>Desobediência → Advertência</li>
-<li>Insulto → 20 ripadas</li>
-<li>Reincidência → Banimento</li>
+<li>Traição → 20 ripadas nas costas  + expulsão</li>
+<li>Desobediência → advertência</li>
+<li>Abuso de poder → rebaixamento</li>
+<li>Insulto a superiores → 10 ripadas</li>
+<li>3 advertências → expulsão</li>
 </ul>
 </div>
 
 <div id="eye">👁 VOCÊ ESTÁ SENDO OBSERVADO</div>
 
 <script>
-/* ANIMAÇÃO DAS SEÇÕES */
-const obs = new IntersectionObserver(e=>{
-e.forEach(x=>{
-if(x.isIntersecting) x.target.classList.add("show")
-})
+const obs=new IntersectionObserver(e=>{
+    e.forEach(x=>x.isIntersecting&&x.target.classList.add("show"))
 },{threshold:.2})
 document.querySelectorAll(".section").forEach(s=>obs.observe(s))
 
-/* ASCII CONSOLE */
 const troll = `
-⠀⠀⠀⠀⠀⠀⢀⣴⣶⣶⣦⣄⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⢠⣾⣿⡿⠟⠛⠛⠛⠻⠿⢿⣶⣄⠀
-⠀⠀⠀⠀⢀⣴⣿⡿⠁⠀⠀⠀⠀⠀⠀⠀⠙⢷⣄
-⠀⠀⠀⢠⣾⣿⠟⠀⠀⠀⣀⣀⣀⣀⠀⠀⠀⠈⢿⣆
-⠀⠀⢠⣿⣿⠏⠀⠀⠀⣾⣿⣿⣿⣿⣷⡄⠀⠀⠘⣿⣆
-⠀⠀⣾⣿⡟⠀⠀⠀⢸⣿⣿⣿⣿⣿⣿⣧⠀⠀⠀⢹⣿⡆
-⠀⢸⣿⣿⡇⠀⠀⠀⢸⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠈⣿⣷
-⠀⢸⣿⣿⣧⠀⠀⠀⠘⢿⣿⣿⣿⣿⡿⠟⠀⠀⠀⢠⣿⣿
-⠀⠀⢻⣿⣿⣧⡀⠀⠀⠀⠈⠉⠉⠉⠀⠀⠀⢀⣴⣿⣿⠏
-⠀⠀⠀⠙⢿⣿⣿⣦⣀⠀⠀⠀⠀⠀⠀⣠⣴⣿⣿⠟⠋
-⠀⠀⠀⠀⠀⠈⠙⠻⠿⠿⠶⠶⠶⠶⠶⠶⠿⠿⠟⠋⠁
+⣿⣿⣿⣿⣿⣿⡟⠁⠄⠄⠄⠄⣠⣤⣴⣶⣶⣶⣶⣤⡀⠈⠙⢿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⡟⠄⠄⠄⠄⠄⣸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣆⠄⠈⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⠁⠄⠄⠄⢀⣴⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠄⠄⢺⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⡄⠄⠄⠄⠙⠻⠿⣿⣿⣿⣿⠿⠿⠛⠛⠻⣿⡄⠄⣾⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⡇⠄⠄⠁ 👁️ ⠄⢹⣿⡗⠄ 👁️ ⢄⡀⣾⢀⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⡇⠘⠄⠄⠄⢀⡀⠄⣿⣿⣷⣤⣤⣾⣿⣿⣿⣧⢸⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⡇⠄⣰⣿⡿⠟⠃⠄⣿⣿⣿⣿⣿⡛⠿⢿⣿⣷⣾⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⡄⠈⠁⠄⠄⠄⠄⠻⠿⢛⣿⣿⠿⠂⠄⢹⢹⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⡐⠐⠄⠄⣠⣀⣀⣚⣯⣵⣶⠆⣰⠄⠞⣾⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣷⡄⠄⠄⠈⠛⠿⠿⠿⣻⡏⢠⣿⣎⣾⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⡿⠟⠛⠄⠄⠄⠄⠙⣛⣿⣿⣵⣿⡿⢹⡟⣿⣿⣿⣿⣿
+
+You are being watched !
 `
 
-setInterval(()=>{
-console.clear()
-console.log("%c"+troll,"color:red;font-size:11px")
-console.log("%cVOCÊ ESTÁ SENDO OBSERVADO","color:red;font-size:18px")
-},8000)
+setTimeout(()=>{
+    console.clear()
+    console.log("%c"+troll,"color:red;font-size:11px;font-weight:bold")
+},6000)
 </script>
 
 </body>
