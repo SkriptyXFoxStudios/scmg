@@ -9,177 +9,204 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Orbitron}
 body{background:black;color:white;overflow:hidden}
-canvas{position:fixed;inset:0;z-index:-1}
 
-header{
-    position:absolute;
-    top:15%;
-    width:100%;
-    text-align:center;
-    z-index:10;
-}
-h1{
-    font-size:4rem;
-    letter-spacing:8px;
-    animation:glitch 1.5s infinite;
-}
-@keyframes glitch{
-    0%{text-shadow:2px 2px red}
-    20%{text-shadow:-2px -2px cyan}
-    40%{text-shadow:2px -2px red}
-    60%{text-shadow:-2px 2px cyan}
-    100%{text-shadow:2px 2px red}
+/* INTRO */
+#boot{
+    position:fixed;
+    inset:0;
+    background:black;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    z-index:9999;
+    animation:fadeOut 2s ease forwards;
+    animation-delay:6s;
 }
 
+#symbol{
+    font-size:120px;
+    color:red;
+    animation:spin 2s linear infinite, glow 1.5s infinite alternate;
+}
+
+#boot h1{
+    margin-top:20px;
+    font-size:2rem;
+    letter-spacing:4px;
+    animation:glitchText 1s infinite;
+}
+
+#loading{
+    margin-top:30px;
+    font-size:14px;
+    letter-spacing:2px;
+    animation:blink 1s infinite;
+}
+
+@keyframes spin{
+    from{transform:rotate(0deg)}
+    to{transform:rotate(360deg)}
+}
+
+@keyframes glow{
+    from{text-shadow:0 0 10px red}
+    to{text-shadow:0 0 40px red}
+}
+
+@keyframes blink{
+    0%,100%{opacity:.2}
+    50%{opacity:1}
+}
+
+@keyframes fadeOut{
+    to{opacity:0;visibility:hidden}
+}
+
+/* FUNDO */
+.bg{
+    position:fixed;
+    inset:0;
+    background:radial-gradient(circle at center,#200 0%,#000 70%);
+    animation:bgpulse 6s infinite alternate;
+    z-index:-2;
+}
+
+@keyframes bgpulse{
+    0%{filter:hue-rotate(0deg)}
+    100%{filter:hue-rotate(120deg)}
+}
+
+/* LOGO */
 .logo{
     width:260px;
-    margin-top:40px;
-    filter:drop-shadow(0 0 30px red);
-    animation:float 4s ease-in-out infinite;
+    margin:auto;
+    display:block;
+    filter:drop-shadow(0 0 40px red);
+    animation:levitate 3s ease-in-out infinite, glitch 1.2s infinite;
 }
-@keyframes float{
+
+@keyframes levitate{
     0%{transform:translateY(0)}
     50%{transform:translateY(-25px)}
     100%{transform:translateY(0)}
 }
 
+@keyframes glitch{
+    0%{filter:drop-shadow(0 0 5px red)}
+    20%{filter:drop-shadow(-4px 2px cyan)}
+    40%{filter:drop-shadow(4px -2px red)}
+    60%{filter:drop-shadow(-4px -2px cyan)}
+    100%{filter:drop-shadow(0 0 5px red)}
+}
+
+h1{
+    text-align:center;
+    font-size:4rem;
+    letter-spacing:8px;
+    animation:glitchText 1s infinite;
+}
+
+@keyframes glitchText{
+    0%{text-shadow:2px 2px red}
+    25%{text-shadow:-2px -2px cyan}
+    50%{text-shadow:2px -2px red}
+    75%{text-shadow:-2px 2px cyan}
+    100%{text-shadow:2px 2px red}
+}
+
 .section{
-    position:relative;
+    margin:120px auto;
     max-width:1100px;
-    margin:140px auto;
     padding:40px;
-    background:rgba(0,0,0,.7);
+    background:rgba(0,0,0,.8);
     border:1px solid red;
     box-shadow:0 0 40px red;
+    transform:scale(.6) rotateX(40deg);
     opacity:0;
-    transform:scale(.7);
     transition:1s;
 }
 
 .section.show{
+    transform:scale(1) rotateX(0);
     opacity:1;
-    transform:scale(1);
 }
 
-h2{color:red;margin-bottom:20px}
+li{margin:10px 0}
+li::before{content:"☠ ";color:red}
 
-li{margin:8px 0}
-li::before{content:"⚔ ";color:red}
-
-#watcher{
+#eye{
     position:fixed;
-    bottom:20px;
-    right:20px;
+    bottom:30px;
+    right:30px;
     color:red;
-    font-size:13px;
-    animation:blink 1.5s infinite;
-}
-
-@keyframes blink{
-    0%,100%{opacity:.3}
-    50%{opacity:1}
+    animation:blink 1.2s infinite;
 }
 </style>
 </head>
 
 <body>
 
-<canvas id="bg"></canvas>
-
-<header>
+<div id="boot">
+    <div id="symbol">⋈</div>
     <h1>SANTA CATARINA MANJI GANG</h1>
-    <img class="logo" src="https://files.catbox.moe/k207zr.png">
-</header>
+    <div id="loading">INITIALIZING SYSTEM...</div>
+</div>
+
+<div class="bg"></div>
+
+<h1>SANTA CATARINA MANJI GANG</h1>
+<img src="https://files.catbox.moe/k207zr.png" class="logo">
 
 <div class="section">
-    <h2>REGRAS</h2>
-    <ul>
-        <li>Proibido trair</li>
-        <li>Proibido vazar informações</li>
-        <li>Respeito obrigatório</li>
-        <li>Obedecer superiores</li>
-        <li>Manter o nome limpo</li>
-    </ul>
+<h2>REGRAS</h2>
+<ul>
+<li>Não trair</li>
+<li>Não vazar informações</li>
+<li>Respeitar superiores</li>
+<li>Não causar problemas</li>
+<li>Honrar a gangue</li>
+</ul>
 </div>
 
 <div class="section">
-    <h2>PUNIÇÕES</h2>
-    <ul>
-        <li>Traição: Expulsão + 40 ripadas</li>
-        <li>Desobediência: Advertência</li>
-        <li>Insulto: 20 ripadas</li>
-        <li>Reincidência: Banimento</li>
-    </ul>
+<h2>PUNIÇÕES</h2>
+<ul>
+<li>Traição → Expulsão + 40 ripadas</li>
+<li>Desobediência → Advertência</li>
+<li>Insulto → 20 ripadas</li>
+<li>Reincidência → Banimento</li>
+</ul>
 </div>
 
-<div id="watcher">👁 YOU ARE BEING WATCHED</div>
-
-<script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<div id="eye">👁 VOCÊ ESTÁ SENDO OBSERVADO</div>
 
 <script>
-const scene=new THREE.Scene()
-const camera=new THREE.PerspectiveCamera(75,innerWidth/innerHeight,0.1,1000)
-const renderer=new THREE.WebGLRenderer({canvas:document.getElementById("bg"),alpha:true})
-renderer.setSize(innerWidth,innerHeight)
+const obs=new IntersectionObserver(e=>{
+    e.forEach(x=>x.isIntersecting&&x.target.classList.add("show"))
+},{threshold:.2})
+document.querySelectorAll(".section").forEach(s=>obs.observe(s))
 
-const geometry=new THREE.TorusKnotGeometry(10,3,200,32)
-const material=new THREE.MeshBasicMaterial({color:0xff0000,wireframe:true})
-const knot=new THREE.Mesh(geometry,material)
-scene.add(knot)
-
-camera.position.z=40
-
-function animate(){
-    requestAnimationFrame(animate)
-    knot.rotation.x+=0.003
-    knot.rotation.y+=0.004
-    renderer.render(scene,camera)
-}
-animate()
-
-gsap.from("header",{opacity:0,y:-80,duration:2})
-gsap.utils.toArray(".section").forEach((el,i)=>{
-    gsap.to(el,{
-        scrollTrigger:{
-            trigger:el,
-            start:"top 80%"
-        },
-        opacity:1,
-        scale:1,
-        duration:1.2
-    })
-})
-
-const ascii=`
-███████████████████████████
-███████▀▀▀░░░░░░░▀▀▀███████
-████▀░░░░░░░░░░░░░░░░░▀████
-███│░░░░░░░░░░░░░░░░░░░│███
-██▌│░░░░░░░░░░░░░░░░░░░│▐██
-██░└┐░░░░░░░░░░░░░░░░░┌┘░██
-██░░└┐░░░░░░░░░░░░░░░┌┘░░██
-██░░┌┘▄▄▄▄▄░░░░░▄▄▄▄▄└┐░░██
-██▌░│██████▌░░░▐██████│░▐██
-███░│▐███▀▀░░▄░░▀▀███▌│░███
-██▀─┘░░░░░░░▐█▌░░░░░░░└─▀██
-██▄░░░▄▄▄▓░░▀█▀░░▓▄▄▄░░░▄██
-████▄─┘██▌░░░░░░░▐██└─▄████
-█████░░▐█─┬┬┬┬┬┬┬─█▌░░█████
-████▌░░░▀┬┼┼┼┼┼┼┼┬▀░░░▐████
-█████▄░░░└┴┴┴┴┴┴┴┘░░░▄█████
-███████▄░░░░░░░░░░░▄███████
-██████████▄▄▄▄▄▄▄██████████
-███████████████████████████
-YOU ARE BEING WATCHED
+const troll=`
+⠀⠀⠀⠀⠀⠀⢀⣴⣶⣶⣦⣄⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⢠⣾⣿⡿⠟⠛⠛⠛⠻⠿⢿⣶⣄⠀
+⠀⠀⠀⠀⢀⣴⣿⡿⠁⠀⠀⠀⠀⠀⠀⠀⠙⢷⣄
+⠀⠀⠀⢠⣾⣿⠟⠀⠀⠀⣀⣀⣀⣀⠀⠀⠀⠈⢿⣆
+⠀⠀⢠⣿⣿⠏⠀⠀⠀⣾⣿⣿⣿⣿⣷⡄⠀⠀⠘⣿⣆
+⠀⠀⣾⣿⡟⠀⠀⠀⢸⣿⣿⣿⣿⣿⣿⣧⠀⠀⠀⢹⣿⡆
+⠀⢸⣿⣿⡇⠀⠀⠀⢸⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠈⣿⣷
+⠀⢸⣿⣿⣧⠀⠀⠀⠘⢿⣿⣿⣿⣿⡿⠟⠀⠀⠀⢠⣿⣿
+⠀⠀⢻⣿⣿⣧⡀⠀⠀⠀⠈⠉⠉⠉⠀⠀⠀⢀⣴⣿⣿⠏
+⠀⠀⠀⠙⢿⣿⣿⣦⣀⠀⠀⠀⠀⠀⠀⣠⣴⣿⣿⠟⠋
+⠀⠀⠀⠀⠀⠈⠙⠻⠿⠿⠶⠶⠶⠶⠶⠶⠿⠿⠟⠋⠁
+TROLL FACE DETECTED
 `
 
-setInterval(()=>{
+setTimeout(()=>{
     console.clear()
-    console.log("%c"+ascii,"color:red;font-size:12px;font-weight:bold")
-},10000)
+    console.log("%c"+troll,"color:red;font-size:11px;font-weight:bold")
+},7000)
 </script>
 
 </body>
 </html>
-
